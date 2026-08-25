@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Post Title — Devita</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F7F5EE; --paper-2:#EFEBDF; --ink:#1E2A32; --moss:#47624B;
+    --ochre:#B98530; --line:#D8D3C2; --muted:#6B6F66; --card:#FFFEFA; --radius:2px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--paper); color:var(--ink); font-family:'Inter', sans-serif; line-height:1.7; -webkit-font-smoothing:antialiased;}
+  a{color:var(--moss);}
+  .wrap{max-width:720px; margin:0 auto; padding:0 32px;}
+  .eyebrow{font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--moss);}
+  h1,h2,h3{font-family:'Fraunces', serif; font-weight:500; letter-spacing:-0.01em;}
+
+  header{border-bottom:1px solid var(--line); padding:20px 0;}
+  header .wrap{display:flex; justify-content:space-between; align-items:center;}
+  .brand{font-family:'Fraunces', serif; font-size:18px; font-weight:600; text-decoration:none; color:var(--ink);}
+  .back{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--muted); text-decoration:none;}
+  .back:hover{color:var(--moss);}
+
+  .post-head{padding:64px 0 32px; border-bottom:1px solid var(--line);}
+  .post-head .date{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--muted); margin-top:16px; display:block;}
+  .post-head h1{font-size:clamp(30px,5vw,44px); line-height:1.15; margin-top:16px;}
+
+  article{padding:48px 0 96px; font-size:17px;}
+  article p{margin-bottom:20px; color:var(--ink);}
+  article h2{font-size:24px; margin:40px 0 16px;}
+  article h3{font-size:19px; margin:32px 0 12px;}
+  article blockquote{
+    border-left:2px solid var(--ochre); padding-left:18px; margin:24px 0;
+    color:var(--muted); font-style:italic;
+  }
+  article img{max-width:100%; border-radius:var(--radius); margin:24px 0;}
+  article code{font-family:'IBM Plex Mono', monospace; background:var(--paper-2); padding:2px 6px; border-radius:var(--radius); font-size:15px;}
+
+  footer{border-top:1px solid var(--line); padding:32px 0; text-align:center;}
+  footer p{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--muted);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="../index.html">Devita</a>
+    <a class="back" href="../index.html#blog">← Back to blog</a>
+  </div>
+</header>
+
+<div class="post-head">
+  <div class="wrap">
+    <span class="eyebrow">Writing</span>
+    <h1>Replace this with your post title</h1>
+    <span class="date">Month DD, YYYY</span>
+  </div>
+</div>
+
+<article class="wrap">
+  <p>Start your post here. This is a regular paragraph — write your intro, set up what the post is about, and get into it.</p>
+
+  <h2>An example subheading</h2>
+  <p>Use subheadings like this to break up longer posts into sections. This makes long-form writing easier to scan and navigate.</p>
+
+  <blockquote>You can use a blockquote like this to highlight a key idea, a quote, or something you want to stand out.</blockquote>
+
+  <p>Continue writing as many paragraphs as you need. To add an image, use <code>&lt;img src="your-image.jpg" alt="description"&gt;</code> — place the image file in this same <code>blog</code> folder, or in an <code>images</code> folder and adjust the path.</p>
+</article>
+
+<footer>
+  <p>© 2026 Devita</p>
+</footer>
+
+</body>
+</html>
