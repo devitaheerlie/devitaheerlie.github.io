@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Devita — Bioinformatics Researcher &amp; Scientific Illustrator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F7F5EE;
+    --paper-2:#EFEBDF;
+    --ink:#1E2A32;
+    --moss:#47624B;
+    --ochre:#B98530;
+    --line:#D8D3C2;
+    --muted:#6B6F66;
+    --card:#FFFEFA;
+    --radius:2px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1040px; margin:0 auto; padding:0 32px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--moss);
+  }
+  h1,h2,h3{font-family:'Fraunces', serif; font-weight:500; letter-spacing:-0.01em;}
+
+  /* ---- nav ---- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(247,245,238,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{display:flex; align-items:center; justify-content:space-between; height:64px;}
+  .brand{font-family:'Fraunces', serif; font-size:19px; font-weight:600;}
+  .navlinks{display:flex; gap:28px; list-style:none; font-size:14px;}
+  .navlinks a{text-decoration:none; color:var(--ink); opacity:.75; transition:opacity .2s;}
+  .navlinks a:hover, .navlinks a:focus-visible{opacity:1; color:var(--moss);}
+
+  /* ---- hero ---- */
+  .hero{padding:96px 0 84px; border-bottom:1px solid var(--line);}
+  .hero .eyebrow{margin-bottom:18px;}
+  .hero h1{font-size:clamp(40px,6vw,64px); line-height:1.05; max-width:760px;}
+  .hero p.lede{
+    margin-top:22px; max-width:560px; font-size:17px; color:var(--muted);
+  }
+  .hero .tags{display:flex; gap:10px; flex-wrap:wrap; margin-top:32px;}
+  .tag{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.06em;
+    border:1px solid var(--line); padding:5px 10px; border-radius:var(--radius);
+    color:var(--muted); text-transform:uppercase;
+  }
+
+  /* ---- section shell ---- */
+  section{padding:80px 0; border-bottom:1px solid var(--line);}
+  .section-head{display:flex; align-items:baseline; justify-content:space-between; margin-bottom:44px; gap:24px; flex-wrap:wrap;}
+  .section-head h2{font-size:30px;}
+  .section-head .eyebrow{margin-bottom:8px; display:block;}
+  .section-head .count{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--muted);}
+
+  /* ---- specimen label component (signature element) ---- */
+  .specimen{
+    border:1px solid var(--line);
+    background:var(--card);
+    position:relative;
+    padding:22px 22px 20px;
+    border-radius:var(--radius);
+  }
+  .specimen .catno{
+    position:absolute; top:-11px; left:20px;
+    background:var(--paper); padding:0 8px;
+    font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ochre); letter-spacing:.08em;
+  }
+
+  /* ---- about ---- */
+  .about-grid{display:grid; grid-template-columns:1.2fr 1fr; gap:56px; align-items:start;}
+  .about-grid p{margin-bottom:16px; color:var(--ink);}
+  .about-grid p.muted{color:var(--muted); font-size:15px;}
+  .about-card{padding:26px;}
+  .about-card dl{display:grid; grid-template-columns:auto 1fr; gap:10px 16px; font-size:14px;}
+  .about-card dt{font-family:'IBM Plex Mono', monospace; color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.05em; padding-top:2px;}
+  .about-card dd{color:var(--ink);}
+
+  /* ---- research / repos ---- */
+  .repo-list{display:grid; gap:16px;}
+  .repo{
+    display:flex; justify-content:space-between; align-items:center; gap:20px;
+    padding:22px 24px; background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+    text-decoration:none; transition:border-color .2s, transform .2s;
+  }
+  .repo:hover, .repo:focus-visible{border-color:var(--moss); transform:translateX(4px);}
+  .repo h3{font-size:18px; margin-bottom:6px; color:var(--ink);}
+  .repo p{font-size:14px; color:var(--muted); max-width:520px;}
+  .repo .arrow{font-family:'IBM Plex Mono', monospace; color:var(--moss); font-size:20px; flex-shrink:0;}
+
+  /* ---- illustration plates ---- */
+  .plates{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .plate .frame{
+    aspect-ratio:4/5; border:1px dashed var(--line); border-radius:var(--radius);
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    background:
+      repeating-linear-gradient(135deg, var(--paper-2) 0 2px, transparent 2px 14px);
+    color:var(--muted); font-family:'IBM Plex Mono', monospace; font-size:11px; padding:16px;
+  }
+  .plate .caption{margin-top:12px; display:flex; justify-content:space-between; align-items:baseline;}
+  .plate .roman{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--ochre);}
+  .plate .title{font-family:'Fraunces', serif; font-size:15px;}
+
+  /* ---- blog ---- */
+  .posts{display:grid; gap:0;}
+  .post{
+    display:grid; grid-template-columns:120px 1fr auto; gap:24px; align-items:baseline;
+    padding:22px 0; border-top:1px solid var(--line); text-decoration:none; color:var(--ink);
+  }
+  .posts .post:last-child{border-bottom:1px solid var(--line);}
+  .post .date{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--muted);}
+  .post h3{font-size:18px; font-weight:500;}
+  .post .read{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--moss); white-space:nowrap;}
+  .post:hover h3{color:var(--moss);}
+
+  /* ---- connect ---- */
+  .connect-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+  .connect-card{
+    padding:24px; background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+    text-decoration:none; color:var(--ink); transition:border-color .2s, transform .2s;
+  }
+  .connect-card:hover, .connect-card:focus-visible{border-color:var(--ochre); transform:translateY(-3px);}
+  .connect-card .eyebrow{margin-bottom:10px; display:block;}
+  .connect-card .handle{font-family:'Fraunces', serif; font-size:17px;}
+
+  footer{padding:40px 0; text-align:center;}
+  footer p{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--muted);}
+
+  @media (max-width:760px){
+    .navlinks{display:none;}
+    .about-grid{grid-template-columns:1fr;}
+    .plates{grid-template-columns:repeat(2,1fr);}
+    .connect-grid{grid-template-columns:1fr;}
+    .post{grid-template-columns:1fr; gap:6px;}
+  }
+  :focus-visible{outline:2px solid var(--ochre); outline-offset:2px;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="brand">Devita</div>
+    <ul class="navlinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#illustration">Illustration</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#connect">Connect</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Field notes from two disciplines</span>
+    <h1>Devita — bioinformatics researcher &amp; scientific illustrator.</h1>
+    <p class="lede">I study genomes too strange to fit neatly into any tree of life, and I draw the organisms behind the data. This is where both practices live.</p>
+    <div class="tags">
+      <span class="tag">Giant Virus Genomics</span>
+      <span class="tag">NCLDV / GVMAGs</span>
+      <span class="tag">Phylogenomics</span>
+      <span class="tag">Scientific Illustration</span>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div>
+      <span class="eyebrow">01 — About</span>
+      <h2 style="margin:10px 0 20px;">Two ways of looking at the same organism</h2>
+      <p>My research centers on giant virus metagenome-assembled genomes (GVMAGs) and NCLDV genomics — reconstructing and classifying organisms most tools weren't built to see. Alongside that, I illustrate the microbial and marine life I study, translating sequence data and specimens into images.</p>
+      <p class="muted">Edit this paragraph to add your own voice — degree, institution, and what draws you to the overlap between science and illustration.</p>
+    </div>
+    <div class="specimen about-card">
+      <span class="catno">NOTE — 001</span>
+      <dl>
+        <dt>Focus</dt><dd>Bioinformatics · Genomics</dd>
+        <dt>Practice</dt><dd>Scientific Illustration</dd>
+        <dt>Based in</dt><dd>Indonesia</dd>
+        <dt>Currently</dt><dd>Graduate research + illustration commissions</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section id="research">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">02 — Research &amp; Code</span>
+        <h2>Selected work</h2>
+      </div>
+      <span class="count">→ full archive on GitHub</span>
+    </div>
+    <div class="repo-list">
+      <a class="repo" href="https://github.com/YOUR-USERNAME" target="_blank" rel="noopener">
+        <div>
+          <h3>GVMAG / NCLDV genomics pipeline</h3>
+          <p>Tools and workflows for recovering and classifying giant virus genomes from metagenomes.</p>
+        </div>
+        <span class="arrow">→</span>
+      </a>
+      <a class="repo" href="https://github.com/YOUR-USERNAME" target="_blank" rel="noopener">
+        <div>
+          <h3>Coccolithophore phylogenomics</h3>
+          <p>Nuclear phylogenomics pipeline built around Emiliania huxleyi, run on HPC.</p>
+        </div>
+        <span class="arrow">→</span>
+      </a>
+      <a class="repo" href="https://github.com/YOUR-USERNAME" target="_blank" rel="noopener">
+        <div>
+          <h3>All repositories</h3>
+          <p>The full list of projects, scripts, and notebooks — updated as work progresses.</p>
+        </div>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="illustration">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">03 — Scientific Illustration</span>
+        <h2>Plates</h2>
+      </div>
+      <span class="count">6 plates shown</span>
+    </div>
+    <div class="plates">
+      <div class="plate"><div class="frame">Replace with<br>image</div><div class="caption"><span class="roman">Plate I</span><span class="title">Untitled</span></div></div>
+      <div class="plate"><div class="frame">Replace with<br>image</div><div class="caption"><span class="roman">Plate II</span><span class="title">Untitled</span></div></div>
+      <div class="plate"><div class="frame">Replace with<br>image</div><div class="caption"><span class="roman">Plate III</span><span class="title">Untitled</span></div></div>
+      <div class="plate"><div class="frame">Replace with<br>image</div><div class="caption"><span class="roman">Plate IV</span><span class="title">Untitled</span></div></div>
+      <div class="plate"><div class="frame">Replace with<br>image</div><div class="caption"><span class="roman">Plate V</span><span class="title">Untitled</span></div></div>
+      <div class="plate"><div class="frame">Replace with<br>image</div><div class="caption"><span class="roman">Plate VI</span><span class="title">Untitled</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="blog">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">04 — Writing</span>
+        <h2>Latest posts</h2>
+      </div>
+      <span class="count">→ full blog linked below</span>
+    </div>
+    <div class="posts">
+      <a class="post" href="https://your-blog-url.example.com" target="_blank" rel="noopener">
+        <span class="date">Post title</span>
+        <h3>Replace with your latest post title</h3>
+        <span class="read">Read →</span>
+      </a>
+      <a class="post" href="https://your-blog-url.example.com" target="_blank" rel="noopener">
+        <span class="date">Post title</span>
+        <h3>Replace with another post title</h3>
+        <span class="read">Read →</span>
+      </a>
+      <a class="post" href="https://your-blog-url.example.com" target="_blank" rel="noopener">
+        <span class="date">Post title</span>
+        <h3>Replace with a third post title</h3>
+        <span class="read">Read →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="connect" style="border-bottom:none;">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">05 — Connect</span>
+        <h2>Find me elsewhere</h2>
+      </div>
+    </div>
+    <div class="connect-grid">
+      <a class="connect-card" href="https://github.com/YOUR-USERNAME" target="_blank" rel="noopener">
+        <span class="eyebrow">GitHub</span>
+        <div class="handle">@your-username</div>
+      </a>
+      <a class="connect-card" href="https://your-blog-url.example.com" target="_blank" rel="noopener">
+        <span class="eyebrow">Blog</span>
+        <div class="handle">your-blog-url.com</div>
+      </a>
+      <a class="connect-card" href="https://linkedin.com/in/YOUR-USERNAME" target="_blank" rel="noopener">
+        <span class="eyebrow">LinkedIn</span>
+        <div class="handle">Devita</div>
+      </a>
+      <a class="connect-card" href="https://instagram.com/YOUR-RESEARCH-HANDLE" target="_blank" rel="noopener">
+        <span class="eyebrow">Instagram — Research</span>
+        <div class="handle">@your-handle</div>
+      </a>
+      <a class="connect-card" href="https://instagram.com/YOUR-ART-HANDLE" target="_blank" rel="noopener">
+        <span class="eyebrow">Instagram — Illustration</span>
+        <div class="handle">@your-art-handle</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Devita — built with care, edited by you.</p>
+</footer>
+
+</body>
+</html>
